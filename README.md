@@ -1,20 +1,25 @@
 # Following are different az quires and Bash scripts to check Environment Variables in Funcation App(s) in a Resource Group
  
-Query to Get a specific Env Variable from a function app in a RG
+- Query to Get a specific Env Variable from a function app in a RG
+
 ```
 az functionapp config appsettings list --resource-group "RESOURCE_GROUP" --name "FUNCTION_APP" --query "[?name=='ENV_VAR_NAME'].{name:name, value:value}" --output table
 ```
 
-Query to Get all the Env Variables from a function app in a RG
+- Query to Get all the Env Variables from a function app in a RG
+
 ```
 az functionapp config appsettings list --resource-group "RESOURCE_GROUP" --name "FUNCTION_APP" --output table
 ```
-Query to Get a number of specific Env Variables from a function app in a RG
+
+- Query to Get a number of specific Env Variables from a function app in a RG
+
 ```
 az functionapp config appsettings list --resource-group "RESOURCE_GROUP" --name "FUNCTION_APPaa" --query "[?name=='ENV_VAR_NAME_1' || name=='ENV_VAR_NAME_2' || name=='ENV_VAR_NAME_3'].{name:name, value:value}" --output table
 ```
 
-For a Specific ENV Variable in all Functaion apps in a RG
+- For a Specific ENV Variable in all Functaion apps in a RG
+
 ```
 #!/bin/bash
 
@@ -39,7 +44,8 @@ do
 done
 ```
 
-For a number of Specific ENV Variables in all Functaion apps in a RG
+- For a number of Specific ENV Variables in all Functaion apps in a RG
+
 ```
 #!/bin/bash
 
@@ -62,8 +68,7 @@ az functionapp list --resource-group "$RESOURCE_GROUP" --query "[].name" --outpu
 done
 ```
 
-
-For a number of specfic ENV Var which is not using key vault in all Function app in a RG
+- For a number of specfic ENV Var which is not using key vault in all Function app in a RG
 
 ```
 #!/bin/bash
