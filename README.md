@@ -41,6 +41,7 @@ do
         --name "$FUNCTION_APP" \
         --query "[?name=='$ENV_VAR_NAME'].{name:name, value:value}" \
         --output table
+    echo "  "
 done
 ```
 
@@ -65,6 +66,8 @@ az functionapp list --resource-group "$RESOURCE_GROUP" --query "[].name" --outpu
         --name "$FUNCTION_APP" \
         --query "[?name=='${ENV_VARS[0]}' || name=='${ENV_VARS[1]}' || name=='${ENV_VARS[2]}'].{name:name, value:value}" \
         --output table
+
+    echo "  "
 done
 ```
 
@@ -82,7 +85,6 @@ ENV_VARS=("AzureWebJobsStorage" "AzureWebJobsDashboard" "CommonStorageConnection
 # List all function apps and check for the environment variables in each
 az functionapp list --resource-group "$RESOURCE_GROUP" --query "[].name" --output tsv | while read FUNCTION_APP; do
     echo "Checking Function App: $FUNCTION_APP"
-    echo /n
     # Fetch all app settings for the current function app and filter by the desired environment variables
     az functionapp config appsettings list \
         --resource-group "$RESOURCE_GROUP" \
@@ -94,5 +96,6 @@ az functionapp list --resource-group "$RESOURCE_GROUP" --query "[].name" --outpu
                 echo "Variable: $NAME, Value: $VALUE (not using Key Vault)"
             fi
         done
+    echo "   "
 done
 ```
