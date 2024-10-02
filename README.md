@@ -6,32 +6,16 @@
 az functionapp config appsettings list --resource-group "RESOURCE_GROUP" --name "FUNCTION_APP" --query "[?name=='ENV_VAR_NAME'].{name:name, value:value}" --output table
 ```
 
-## Query to Get all the Env Variables from a function app in a RG
+Query to Get all the Env Variables from a function app in a RG
 ```
 az functionapp config appsettings list --resource-group "RESOURCE_GROUP" --name "FUNCTION_APP" --output table
-
+```
 ## Query to Get a number of specific Env Variables from a function app in a RG
 ```
 az functionapp config appsettings list --resource-group "RESOURCE_GROUP" --name "FUNCTION_APPaa" --query "[?name=='ENV_VAR_NAME_1' || name=='ENV_VAR_NAME_2' || name=='ENV_VAR_NAME_3'].{name:name, value:value}" --output table
-
-
-## For a single env variable and all functaion apps
-```
-# Replace these with your actual values
-RESOURCE_GROUP="your-resource-group-name"
-ENV_VAR_NAME="your-environment-variable"
-
-# List all function apps and check for the environment variable in each
-az functionapp list --resource-group "$RESOURCE_GROUP" --query "[].name" --output tsv | while read FUNCTION_APP; do
-    echo "Checking Function App: $FUNCTION_APP"
-    az functionapp config appsettings list \
-        --resource-group "$RESOURCE_GROUP" \
-        --name "$FUNCTION_APP" \
-        --query "[?name=='$ENV_VAR_NAME'].{name:name, value:value}" \
-        --output table
-done
 ```
 
+For a Specific ENV Variable in all Functaion apps in a RG
 ```
 #!/bin/bash
 
@@ -56,7 +40,7 @@ do
 done
 ```
 
-For multiple number of env variables and all functaion apps
+For a number of Specific ENV Variables in all Functaion apps in a RG
 ``` 
 # Replace these with your actual values
 RESOURCE_GROUP="your-resource-group-name"
@@ -78,7 +62,8 @@ done
 ```
 
 
-only find the value which is not using key vault for selected env vars
+For a number of specfic ENV Var which is not using key vault in all Function app in a RG
+
 ```
 #!/bin/bash
 # Replace these with your actual values
