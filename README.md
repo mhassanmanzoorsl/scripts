@@ -1,4 +1,4 @@
-# Following are different az quires and bash scripts to check Environment Variables in Funcation App(s) in a Resource Group
+# Following are different az quires and Bash scripts to check Environment Variables in Funcation App(s) in a Resource Group
  
 Query to Get a specific Env Variable from a function app in a RG
 ```
@@ -40,7 +40,9 @@ done
 ```
 
 For a number of Specific ENV Variables in all Functaion apps in a RG
-``` 
+```
+#!/bin/bash
+
 # Replace these with your actual values
 RESOURCE_GROUP="your-resource-group-name"
 
@@ -65,6 +67,7 @@ For a number of specfic ENV Var which is not using key vault in all Function app
 
 ```
 #!/bin/bash
+
 # Replace these with your actual values
 RESOURCE_GROUP="your-resource-group-name"
 
