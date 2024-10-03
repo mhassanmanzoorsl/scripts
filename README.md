@@ -70,6 +70,24 @@ az functionapp list --resource-group "$RESOURCE_GROUP" --query "[].name" --outpu
     echo "  "
 done
 ```
+- To get all environment variables for all Function Apps present in a Resource Group
+```
+#!/bin/bash
+
+# Replace with your actual resource group name
+RESOURCE_GROUP="your-resource-group-name"
+
+# List all function apps and get all environment variables for each
+az functionapp list --resource-group "$RESOURCE_GROUP" --query "[].name" --output tsv | while read FUNCTION_APP; do
+    echo "Checking Function App: $FUNCTION_APP"
+    # Get all app settings (environment variables) for the Function App
+    az functionapp config appsettings list \
+        --resource-group "$RESOURCE_GROUP" \
+        --name "$FUNCTION_APP" \
+        --output table
+    echo "   "
+done
+```
 
 - For a number of specfic ENV Var which is not using key vault in all Function app in a RG
 
