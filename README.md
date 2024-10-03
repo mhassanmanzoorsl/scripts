@@ -1,24 +1,24 @@
-# Following are different az quires and Bash scripts to check Environment Variables in Funcation App(s) in a Resource Group
+# Following are various Azure CLI queries and Bash scripts for checking environment variables in Function App(s) within a resource group.
  
-- Query to Get a specific Env Variable from a function app in a RG
+- This command retrieves and displays the value of a specific environment variable from a Function App within an Azure resource group in a table format.
 
 ```
 az functionapp config appsettings list --resource-group "RESOURCE_GROUP" --name "FUNCTION_APP" --query "[?name=='ENV_VAR_NAME'].{name:name, value:value}" --output table
 ```
 
-- Query to Get all the Env Variables from a function app in a RG
+- This command retrieves and displays all environment variables (app settings) for a specified Function App within an Azure resource group in a table format.
 
 ```
 az functionapp config appsettings list --resource-group "RESOURCE_GROUP" --name "FUNCTION_APP" --output table
 ```
 
-- Query to Get a number of specific Env Variables from a function app in a RG
+- This command retrieves the values of specific environment variables from a Function App in Azure, filtering for three specified variable names and displaying the results in a table format.
 
 ```
 az functionapp config appsettings list --resource-group "RESOURCE_GROUP" --name "FUNCTION_APPaa" --query "[?name=='ENV_VAR_NAME_1' || name=='ENV_VAR_NAME_2' || name=='ENV_VAR_NAME_3'].{name:name, value:value}" --output table
 ```
 
-- For a Specific ENV Variable in all Functaion apps in a RG
+- This script checks for a single specific environment variable in all Function Apps within a specified resource group and displays its value if present.
 
 ```
 #!/bin/bash
@@ -45,7 +45,7 @@ do
 done
 ```
 
-- For a number of Specific ENV Variables in all Functaion apps in a RG
+- This script checks for specific environment variables across all Function Apps within a resource group and displays their values in a table format.
 
 ```
 #!/bin/bash
@@ -70,7 +70,7 @@ az functionapp list --resource-group "$RESOURCE_GROUP" --query "[].name" --outpu
     echo "  "
 done
 ```
-- To get all environment variables for all Function Apps present in a Resource Group
+- This script retrieves and displays all environment variables for each Function App in a specified Azure resource group.
 ```
 #!/bin/bash
 
@@ -89,7 +89,7 @@ az functionapp list --resource-group "$RESOURCE_GROUP" --query "[].name" --outpu
 done
 ```
 
-- For a number of specfic ENV Var which is not using key vault in all Function app in a RG
+- This script checks specific environment variables in all Function Apps within a resource group and identifies whether they are not using Azure Key Vault references.
 
 ```
 #!/bin/bash
