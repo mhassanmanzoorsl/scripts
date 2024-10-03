@@ -54,7 +54,7 @@ done
 RESOURCE_GROUP="your-resource-group-name"
 
 # Define an array of environment variable names to check
-ENV_VARS=("AzureWebJobsStorage" "AzureWebJobsDashboard" "CommonStorageConnectionString")
+ENV_VARS=("ENV_VAR_NAME_1" "ENV_VAR_NAME_2" "ENV_VAR_NAME_3")
 
 # List all function apps and check for the environment variables in each
 az functionapp list --resource-group "$RESOURCE_GROUP" --query "[].name" --output tsv | while read FUNCTION_APP; do
@@ -98,7 +98,7 @@ done
 RESOURCE_GROUP="your-resource-group-name"
 
 # Define an array of environment variable names to check
-ENV_VARS=("AzureWebJobsStorage" "AzureWebJobsDashboard" "CommonStorageConnectionString")
+ENV_VARS=("ENV_VAR_NAME_1" "ENV_VAR_NAME_2" "ENV_VAR_NAME_3")
 
 # List all function apps and check for the environment variables in each
 az functionapp list --resource-group "$RESOURCE_GROUP" --query "[].name" --output tsv | while read FUNCTION_APP; do
