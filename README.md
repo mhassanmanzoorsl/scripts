@@ -1,6 +1,6 @@
-# Scripts Repository
+# Network Access Validation Scripts for Azure Resources: Storage Accounts and Cosmos DB
 
-# Script 1
+- A script to check network access rules for all storage accounts in a specified Azure Resource Group, identifying if any are exposed to the public network.
 ```
 #!/bin/bash
 
@@ -53,7 +53,7 @@ echo "Network check completed for Resource Group: $RESOURCE_GROUP."
 ```
 
 
-# Script 2
+- A script to check network access rules for both Azure storage and Cosmos DB accounts in a specified Resource Group, identifying any that are exposed to the public network.
 
 ```
 #!/bin/bash
@@ -146,7 +146,7 @@ echo "Network check completed for Resource Group: $RESOURCE_GROUP."
 
 ```
 
-# Script 3
+- A script that checks network access rules for Azure storage and Cosmos DB accounts in a specified Resource Group, logging the exposure status (secured or exposed) to a CSV file for further analysis.
 
 ```
 #!/bin/bash
